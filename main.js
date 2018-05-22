@@ -1,17 +1,17 @@
 
 var INITIALIZE_SCRIPTS = new Scripts();
 INITIALIZE_SCRIPTS.setSolidScript([
-  'addNumber',
-  'parsingGenerateSystem/initCTXFreeGrammar',
+  ['addNumber'],
+  ['parsingGenerateSystem', 'initCTXFreeGrammar'],
 ]);
 INITIALIZE_SCRIPTS.setTempScript([
-  'setPHPKeyValue',
+  ['setPHPKeyValue'],
 ]);
 
 function start() {
   // CTXFreeGrammarMain();
-  var result = selectFunction('initCTXFreeGrammar');
-  PopupCenterDual('','a1', 600, 600, result);
+  // var result = selectFunction('initCTXFreeGrammar');
+  // PopupCenterDual('','a1', 600, 600, result);
 }
 
 function selectFunction(functionName){
@@ -41,9 +41,9 @@ function isExistFunction(scriptName)
   var slashCount = rawFileURL.split('/').length - 1;
   var slachPattern = /\//;
 
-  for (key in rawFileURL) {
-    fileURL += rawFileURL[key];
-    rawFileURL[key].match(slachPattern) ? slashCount-- : slashCount;
+  for (i in rawFileURL) {
+    fileURL += rawFileURL[i];
+    rawFileURL[i].match(slachPattern) ? slashCount-- : slashCount;
     if(slashCount === 0){
       break;
     }
@@ -51,10 +51,14 @@ function isExistFunction(scriptName)
 
   // 새로운 디렉토리에 대한 로직을 추가해야함.
   var directories = ['solidFunction', 'tempFunction'];
-  for (key in directories) {
-    var tempURL = fileURL + directories[key] + '/' + scriptName + '.js';
-    for(key in scriptsNames){
-      if(scriptsNames[key] === tempURL){
+  for (i in directories) {
+    var tempURL = fileURL + directories[i] + '/' + scriptName + '.js';
+    // if(){
+
+    // }
+
+    for(i in scriptsNames){
+      if(scriptsNames[i] === tempURL){
         result = true;
         break;
       }
