@@ -1,12 +1,16 @@
 var rawCTXFreeGrammar = 
 `
-LITERAL:   DecimalConstant     |   OctalConstant     |   HexadecimalConstant     ;
+LITERAL: 	
 
-DecimalConstant
-    :   '0'
-	|   [1-9] [0-9]*
-    ;
 `;
+// `
+// LITERAL:   DecimalConstant     |   OctalConstant     |   HexadecimalConstant     ;
+
+// DecimalConstant
+//     :   '0'
+// 	|   [1-9] [0-9]*
+//     ;
+// `;
 
 //  一番前は改行文字がある。排除する。
 if (rawCTXFreeGrammar[0].match(/\n/) && rawCTXFreeGrammar[rawCTXFreeGrammar.length-1].match(/\n/)) {
