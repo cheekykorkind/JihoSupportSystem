@@ -10,8 +10,8 @@ INITIALIZE_SCRIPTS.setTempScript([
 
 function start() {
   // CTXFreeGrammarMain();
-  // var result = selectFunction('initCTXFreeGrammar');
-  // PopupCenterDual('','a1', 600, 600, result);
+  var result = selectFunction('initCTXFreeGrammar');
+  PopupCenterDual('','a1', 600, 600, result);
 }
 
 function selectFunction(functionName){
@@ -29,6 +29,7 @@ function isExistFunction(scriptName)
   var result = false;
   var scripts = document.getElementsByTagName('script');
   var scriptsNames = new Array();
+  var scriptName = scriptName+'.js';
 
   // sciprt属性以外の属性もあるからfor inは使えない。
   for(var i = 0; i < scripts.length; i++){
@@ -49,19 +50,14 @@ function isExistFunction(scriptName)
     }
   }
 
-  // 새로운 디렉토리에 대한 로직을 추가해야함.
-  var directories = ['solidFunction', 'tempFunction'];
-  for (i in directories) {
-    var tempURL = fileURL + directories[i] + '/' + scriptName + '.js';
-    // if(){
+  for(i in scriptsNames){
+    // scriptName
+    // console.log(scriptsNames[i]);
+    var extractedScriptName = scriptsNames[i].split('/');
 
-    // }
-
-    for(i in scriptsNames){
-      if(scriptsNames[i] === tempURL){
-        result = true;
-        break;
-      }
+    if(scriptName === extractedScriptName[extractedScriptName.length-1]){
+      result = true;
+      break;
     }
   }
 
