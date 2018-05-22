@@ -1,7 +1,7 @@
 var INITIALIZE_SCRIPTS = new Scripts();
 INITIALIZE_SCRIPTS.setSolidScript([
-    'parsingGenerateSystem/CTXFreeGrammar',
-    'parsingGenerateSystem/Scanner',
+    ['parsingGenerateSystem', 'CTXFreeGrammar'],
+    ['parsingGenerateSystem', 'Scanner'],
   ]);
 
 function initCTXFreeGrammar() {

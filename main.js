@@ -1,11 +1,11 @@
 
 var INITIALIZE_SCRIPTS = new Scripts();
 INITIALIZE_SCRIPTS.setSolidScript([
-  'addNumber',
-  'parsingGenerateSystem/initCTXFreeGrammar',
+  ['addNumber'],
+  ['parsingGenerateSystem', 'initCTXFreeGrammar'],
 ]);
 INITIALIZE_SCRIPTS.setTempScript([
-  'setPHPKeyValue',
+  ['setPHPKeyValue'],
 ]);
 
 function start() {
@@ -29,6 +29,7 @@ function isExistFunction(scriptName)
   var result = false;
   var scripts = document.getElementsByTagName('script');
   var scriptsNames = new Array();
+  var scriptName = scriptName+'.js';
 
   // sciprt属性以外の属性もあるからfor inは使えない。
   for(var i = 0; i < scripts.length; i++){
@@ -41,23 +42,22 @@ function isExistFunction(scriptName)
   var slashCount = rawFileURL.split('/').length - 1;
   var slachPattern = /\//;
 
-  for (key in rawFileURL) {
-    fileURL += rawFileURL[key];
-    rawFileURL[key].match(slachPattern) ? slashCount-- : slashCount;
+  for (i in rawFileURL) {
+    fileURL += rawFileURL[i];
+    rawFileURL[i].match(slachPattern) ? slashCount-- : slashCount;
     if(slashCount === 0){
       break;
     }
   }
 
-  // 새로운 디렉토리에 대한 로직을 추가해야함.
-  var directories = ['solidFunction', 'tempFunction'];
-  for (key in directories) {
-    var tempURL = fileURL + directories[key] + '/' + scriptName + '.js';
-    for(key in scriptsNames){
-      if(scriptsNames[key] === tempURL){
-        result = true;
-        break;
-      }
+  for(i in scriptsNames){
+    // scriptName
+    // console.log(scriptsNames[i]);
+    var extractedScriptName = scriptsNames[i].split('/');
+
+    if(scriptName === extractedScriptName[extractedScriptName.length-1]){
+      result = true;
+      break;
     }
   }
 

@@ -7,17 +7,19 @@ function Scripts(){
     }
   
     this.setScript = function(scriptNames, scriptType){
-      for (key in scriptNames) {
+      for (i in scriptNames) {
         var script = document.createElement("script");
-        script.src = './'+scriptType+'/'+ scriptNames[key] +'.js';
-        document.head.appendChild(script);
-      }
-    }
-    
-    this.setRawScript = function(scriptNames){
-      for (key in scriptNames) {
-        var script = document.createElement("script");
-        script.src = './'+scriptNames[key] +'.js';
+        var directoryPath = './'+scriptType+'/';
+        var directoryPathCount = scriptNames[i].length -1;
+
+        for(i1 in scriptNames[i]){
+          if(i1 == directoryPathCount){
+            script.src = directoryPath + scriptNames[i][i1] +'.js';
+            continue;
+          }
+          directoryPath += scriptNames[i][i1] + '/';
+        }
+
         document.head.appendChild(script);
       }
     }
