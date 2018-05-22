@@ -9,7 +9,6 @@ INITIALIZE_SCRIPTS.setTempScript([
 ]);
 
 function start() {
-  // CTXFreeGrammarMain();
   var result = selectFunction('initCTXFreeGrammar');
   PopupCenterDual('','a1', 600, 600, result);
 }
@@ -51,8 +50,6 @@ function isExistFunction(scriptName)
   }
 
   for(i in scriptsNames){
-    // scriptName
-    // console.log(scriptsNames[i]);
     var extractedScriptName = scriptsNames[i].split('/');
 
     if(scriptName === extractedScriptName[extractedScriptName.length-1]){
